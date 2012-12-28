@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 		<title>Michael Ore's Portfolio</title>
-    <link rel="stylesheet" type="text/css" href="style.css" media="screen">
+		<link rel="stylesheet" type="text/css" href="<%= @site.config[:base_url] %>/style.css" media="screen">
 
     <meta name="generator" content="nanoc <%= Nanoc::VERSION %>"> 
   </head>
@@ -14,10 +14,10 @@
     <div id="sidebar">
       <h2>Categories</h2>
       <ul>
-        <li><a href="toys/">Toys</a></li>
-        <li><a href="extracurricular/">Extracurricular</a></li>
-        <li><a href="curricular/">Curricular</a></li>
-        <li><a href="professional/">Professional</a></li>
+        <li><a href="<%= @site.config[:base_url] %>/toys/">Toys</a></li>
+        <li><a href="<%= @site.config[:base_url] %>/extracurricular/">Extracurricular</a></li>
+        <li><a href="<%= @site.config[:base_url] %>/curricular/">Curricular</a></li>
+        <li><a href="<%= @site.config[:base_url] %>/professional/">Professional</a></li>
       </ul>
     </div>
   </body>
