@@ -75,3 +75,8 @@ watcher:
   # When to send notifications (using Growl or notify-send).
   notify_on_compilation_success: true
   notify_on_compilation_failure: true
+
+deploy:
+  iastate:
+    kind: rsync
+    dst: "orem@linux-1.ece.iastate.edu:WWW"
