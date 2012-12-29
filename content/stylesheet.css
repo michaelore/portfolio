@@ -28,24 +28,11 @@ a:hover {
   top: 40px;
   left: 280px;
 
-  width: 500px;
-}
-
-#main h1 {
-  font-size: 40px;
-  font-weight: normal;
-
-  line-height: 40px;
-
-  letter-spacing: -1px;
+  width: 800px;
 }
 
 #main p {
   margin: 20px 0;
-  
-  font-size: 15px;
-  
-  line-height: 20px;
 }
 
 #main ul, #main ol {
@@ -54,8 +41,6 @@ a:hover {
 
 #main li {
   font-size: 15px;
-  
-  line-height: 20px;
 }
 
 #main ul li {
@@ -98,4 +83,8 @@ a:hover {
   font-size: 14px;
 
   line-height: 20px;
+}
+
+.goback {
+  float: right;
 }
