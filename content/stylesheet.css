@@ -37,6 +37,7 @@ a:hover {
 
 #main ul, #main ol {
   margin: 20px;
+	margin-left: 50px;
 }
 
 #main li {
