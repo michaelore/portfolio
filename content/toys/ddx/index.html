@@ -1,0 +1,25 @@
+<h2>Symbolic Differentiation</h2>
+<p>This is a symbolic differentiation and simplification modules written in Emacs Lisp. In accordance with Lisp's code-as-data philosophy, it operates on Lisp's <a href="http://en.wikipedia.org/wiki/S-expression">S-expressions</a>. It makes good use of macros to make extension easier. After a few more functions are added, the differentiation module should work on any <a href="http://en.wikipedia.org/wiki/Elementary_function">Elementary Function</a>. Unfortunately, the output of the differentiation module is often very complex and the simplification module does not work well on many inputs. I worked out how to do these two tasks by thinking about how I do them myself. I did not consult the existing literature on computational algebra in doing this, though I may do so someday for comparison's sake.</p>
+<div class="example">
+	<h3>Example</h3>
+	<pre>
+ELISP> (dd 'x '(sin (* 2 x)))
+(*
+ (+
+  (* 2 1)
+  (* 0 x))
+ (cos
+  (* 2 x)))
+
+ELISP> (simp (dd 'x '(sin (* 2 x))))
+(* 2
+   (cos
+    (* 2 x)))
+	</pre>
+</div>
+<a href="ddx.el">ddx.el</a>
+<a href="simplify.el">simplify.el</a>
+
+<div class="goback">
+	<a href="..">Go Back</a>
+</div>
