@@ -1,0 +1,131 @@
+<script type="text/javascript" src="jquery.js" ></script>
+<script type="text/javascript" src="game.js"></script>
+<style type="text/css">
+table {
+	border-spacing: 0px;
+	border-collapse: collapse;
+}
+</style>
+<h2>Erlang/Ajax Toy</h2>
+<p>This is a simple web "game" made using <a href="http://yaws.hyber.org/">yaws</a> and <a href="http://jquery.com/">jQuery</a>. I wanted to try using Erlang to create a real-time, multiplayer game. I decided the best way to handle both the networking and GUI was with web technologies. What I ended up with is a proof-of-concept consisting of a grid of X's and O's, that may be toggled by clicking on a cell. The interesting part is that the grid is persistent and synced between all users viewing the page. A few years later, just for fun, I worked with a sister to add sounds when cells are clicked on.</p>
+<p>Below is a Javascript-only demo. The grid persistence and syncing feature will not work here, because I cannot run yaws here.</p>
+<div class="demo">
+	<h3>Demo</h3>
+	<table>
+	<tr>
+	<td><img src="images/x.png" id="X9Y9" onclick="click(&#34X9Y9&#34)"></img></td>
+	<td><img src="images/x.png" id="X9Y8" onclick="click(&#34X9Y8&#34)"></img></td>
+	<td><img src="images/x.png" id="X9Y7" onclick="click(&#34X9Y7&#34)"></img></td>
+	<td><img src="images/x.png" id="X9Y6" onclick="click(&#34X9Y6&#34)"></img></td>
+	<td><img src="images/x.png" id="X9Y5" onclick="click(&#34X9Y5&#34)"></img></td>
+	<td><img src="images/x.png" id="X9Y4" onclick="click(&#34X9Y4&#34)"></img></td>
+	<td><img src="images/x.png" id="X9Y3" onclick="click(&#34X9Y3&#34)"></img></td>
+	<td><img src="images/x.png" id="X9Y2" onclick="click(&#34X9Y2&#34)"></img></td>
+	<td><img src="images/x.png" id="X9Y1" onclick="click(&#34X9Y1&#34)"></img></td>
+	<td><img src="images/x.png" id="X9Y0" onclick="click(&#34X9Y0&#34)"></img></td></tr>
+	<tr>
+	<td><img src="images/x.png" id="X8Y9" onclick="click(&#34X8Y9&#34)"></img></td>
+	<td><img src="images/x.png" id="X8Y8" onclick="click(&#34X8Y8&#34)"></img></td>
+	<td><img src="images/x.png" id="X8Y7" onclick="click(&#34X8Y7&#34)"></img></td>
+	<td><img src="images/x.png" id="X8Y6" onclick="click(&#34X8Y6&#34)"></img></td>
+	<td><img src="images/x.png" id="X8Y5" onclick="click(&#34X8Y5&#34)"></img></td>
+	<td><img src="images/x.png" id="X8Y4" onclick="click(&#34X8Y4&#34)"></img></td>
+	<td><img src="images/x.png" id="X8Y3" onclick="click(&#34X8Y3&#34)"></img></td>
+	<td><img src="images/x.png" id="X8Y2" onclick="click(&#34X8Y2&#34)"></img></td>
+	<td><img src="images/x.png" id="X8Y1" onclick="click(&#34X8Y1&#34)"></img></td>
+	<td><img src="images/x.png" id="X8Y0" onclick="click(&#34X8Y0&#34)"></img></td></tr>
+	<tr>
+	<td><img src="images/x.png" id="X7Y9" onclick="click(&#34X7Y9&#34)"></img></td>
+	<td><img src="images/x.png" id="X7Y8" onclick="click(&#34X7Y8&#34)"></img></td>
+	<td><img src="images/x.png" id="X7Y7" onclick="click(&#34X7Y7&#34)"></img></td>
+	<td><img src="images/x.png" id="X7Y6" onclick="click(&#34X7Y6&#34)"></img></td>
+	<td><img src="images/x.png" id="X7Y5" onclick="click(&#34X7Y5&#34)"></img></td>
+	<td><img src="images/x.png" id="X7Y4" onclick="click(&#34X7Y4&#34)"></img></td>
+	<td><img src="images/x.png" id="X7Y3" onclick="click(&#34X7Y3&#34)"></img></td>
+	<td><img src="images/x.png" id="X7Y2" onclick="click(&#34X7Y2&#34)"></img></td>
+	<td><img src="images/x.png" id="X7Y1" onclick="click(&#34X7Y1&#34)"></img></td>
+	<td><img src="images/x.png" id="X7Y0" onclick="click(&#34X7Y0&#34)"></img></td></tr>
+	<tr>
+	<td><img src="images/x.png" id="X6Y9" onclick="click(&#34X6Y9&#34)"></img></td>
+	<td><img src="images/x.png" id="X6Y8" onclick="click(&#34X6Y8&#34)"></img></td>
+	<td><img src="images/x.png" id="X6Y7" onclick="click(&#34X6Y7&#34)"></img></td>
+	<td><img src="images/x.png" id="X6Y6" onclick="click(&#34X6Y6&#34)"></img></td>
+	<td><img src="images/x.png" id="X6Y5" onclick="click(&#34X6Y5&#34)"></img></td>
+	<td><img src="images/x.png" id="X6Y4" onclick="click(&#34X6Y4&#34)"></img></td>
+	<td><img src="images/x.png" id="X6Y3" onclick="click(&#34X6Y3&#34)"></img></td>
+	<td><img src="images/x.png" id="X6Y2" onclick="click(&#34X6Y2&#34)"></img></td>
+	<td><img src="images/x.png" id="X6Y1" onclick="click(&#34X6Y1&#34)"></img></td>
+	<td><img src="images/x.png" id="X6Y0" onclick="click(&#34X6Y0&#34)"></img></td></tr>
+	<tr>
+	<td><img src="images/x.png" id="X5Y9" onclick="click(&#34X5Y9&#34)"></img></td>
+	<td><img src="images/x.png" id="X5Y8" onclick="click(&#34X5Y8&#34)"></img></td>
+	<td><img src="images/x.png" id="X5Y7" onclick="click(&#34X5Y7&#34)"></img></td>
+	<td><img src="images/x.png" id="X5Y6" onclick="click(&#34X5Y6&#34)"></img></td>
+	<td><img src="images/x.png" id="X5Y5" onclick="click(&#34X5Y5&#34)"></img></td>
+	<td><img src="images/x.png" id="X5Y4" onclick="click(&#34X5Y4&#34)"></img></td>
+	<td><img src="images/x.png" id="X5Y3" onclick="click(&#34X5Y3&#34)"></img></td>
+	<td><img src="images/x.png" id="X5Y2" onclick="click(&#34X5Y2&#34)"></img></td>
+	<td><img src="images/x.png" id="X5Y1" onclick="click(&#34X5Y1&#34)"></img></td>
+	<td><img src="images/x.png" id="X5Y0" onclick="click(&#34X5Y0&#34)"></img></td></tr>
+	<tr>
+	<td><img src="images/x.png" id="X4Y9" onclick="click(&#34X4Y9&#34)"></img></td>
+	<td><img src="images/x.png" id="X4Y8" onclick="click(&#34X4Y8&#34)"></img></td>
+	<td><img src="images/x.png" id="X4Y7" onclick="click(&#34X4Y7&#34)"></img></td>
+	<td><img src="images/x.png" id="X4Y6" onclick="click(&#34X4Y6&#34)"></img></td>
+	<td><img src="images/x.png" id="X4Y5" onclick="click(&#34X4Y5&#34)"></img></td>
+	<td><img src="images/x.png" id="X4Y4" onclick="click(&#34X4Y4&#34)"></img></td>
+	<td><img src="images/x.png" id="X4Y3" onclick="click(&#34X4Y3&#34)"></img></td>
+	<td><img src="images/x.png" id="X4Y2" onclick="click(&#34X4Y2&#34)"></img></td>
+	<td><img src="images/x.png" id="X4Y1" onclick="click(&#34X4Y1&#34)"></img></td>
+	<td><img src="images/x.png" id="X4Y0" onclick="click(&#34X4Y0&#34)"></img></td></tr>
+	<tr>
+	<td><img src="images/x.png" id="X3Y9" onclick="click(&#34X3Y9&#34)"></img></td>
+	<td><img src="images/x.png" id="X3Y8" onclick="click(&#34X3Y8&#34)"></img></td>
+	<td><img src="images/x.png" id="X3Y7" onclick="click(&#34X3Y7&#34)"></img></td>
+	<td><img src="images/x.png" id="X3Y6" onclick="click(&#34X3Y6&#34)"></img></td>
+	<td><img src="images/x.png" id="X3Y5" onclick="click(&#34X3Y5&#34)"></img></td>
+	<td><img src="images/x.png" id="X3Y4" onclick="click(&#34X3Y4&#34)"></img></td>
+	<td><img src="images/x.png" id="X3Y3" onclick="click(&#34X3Y3&#34)"></img></td>
+	<td><img src="images/x.png" id="X3Y2" onclick="click(&#34X3Y2&#34)"></img></td>
+	<td><img src="images/x.png" id="X3Y1" onclick="click(&#34X3Y1&#34)"></img></td>
+	<td><img src="images/x.png" id="X3Y0" onclick="click(&#34X3Y0&#34)"></img></td></tr>
+	<tr>
+	<td><img src="images/x.png" id="X2Y9" onclick="click(&#34X2Y9&#34)"></img></td>
+	<td><img src="images/x.png" id="X2Y8" onclick="click(&#34X2Y8&#34)"></img></td>
+	<td><img src="images/x.png" id="X2Y7" onclick="click(&#34X2Y7&#34)"></img></td>
+	<td><img src="images/x.png" id="X2Y6" onclick="click(&#34X2Y6&#34)"></img></td>
+	<td><img src="images/x.png" id="X2Y5" onclick="click(&#34X2Y5&#34)"></img></td>
+	<td><img src="images/x.png" id="X2Y4" onclick="click(&#34X2Y4&#34)"></img></td>
+	<td><img src="images/x.png" id="X2Y3" onclick="click(&#34X2Y3&#34)"></img></td>
+	<td><img src="images/x.png" id="X2Y2" onclick="click(&#34X2Y2&#34)"></img></td>
+	<td><img src="images/x.png" id="X2Y1" onclick="click(&#34X2Y1&#34)"></img></td>
+	<td><img src="images/x.png" id="X2Y0" onclick="click(&#34X2Y0&#34)"></img></td></tr>
+	<tr>
+	<td><img src="images/x.png" id="X1Y9" onclick="click(&#34X1Y9&#34)"></img></td>
+	<td><img src="images/x.png" id="X1Y8" onclick="click(&#34X1Y8&#34)"></img></td>
+	<td><img src="images/x.png" id="X1Y7" onclick="click(&#34X1Y7&#34)"></img></td>
+	<td><img src="images/x.png" id="X1Y6" onclick="click(&#34X1Y6&#34)"></img></td>
+	<td><img src="images/x.png" id="X1Y5" onclick="click(&#34X1Y5&#34)"></img></td>
+	<td><img src="images/x.png" id="X1Y4" onclick="click(&#34X1Y4&#34)"></img></td>
+	<td><img src="images/x.png" id="X1Y3" onclick="click(&#34X1Y3&#34)"></img></td>
+	<td><img src="images/x.png" id="X1Y2" onclick="click(&#34X1Y2&#34)"></img></td>
+	<td><img src="images/x.png" id="X1Y1" onclick="click(&#34X1Y1&#34)"></img></td>
+	<td><img src="images/x.png" id="X1Y0" onclick="click(&#34X1Y0&#34)"></img></td></tr>
+	<tr>
+	<td><img src="images/x.png" id="X0Y9" onclick="click(&#34X0Y9&#34)"></img></td>
+	<td><img src="images/x.png" id="X0Y8" onclick="click(&#34X0Y8&#34)"></img></td>
+	<td><img src="images/x.png" id="X0Y7" onclick="click(&#34X0Y7&#34)"></img></td>
+	<td><img src="images/x.png" id="X0Y6" onclick="click(&#34X0Y6&#34)"></img></td>
+	<td><img src="images/x.png" id="X0Y5" onclick="click(&#34X0Y5&#34)"></img></td>
+	<td><img src="images/x.png" id="X0Y4" onclick="click(&#34X0Y4&#34)"></img></td>
+	<td><img src="images/x.png" id="X0Y3" onclick="click(&#34X0Y3&#34)"></img></td>
+	<td><img src="images/x.png" id="X0Y2" onclick="click(&#34X0Y2&#34)"></img></td>
+	<td><img src="images/x.png" id="X0Y1" onclick="click(&#34X0Y1&#34)"></img></td>
+	<td><img src="images/x.png" id="X0Y0" onclick="click(&#34X0Y0&#34)"></img></td></tr>
+	</table>
+</div>
+<a href="http://www.github.com/michaelore/random-snippets/tree/master/erlang/web-game-thing/">Source at github.com</a>
+
+<div class="goback">
+	<a href="..">Go Back</a>
+</div>
