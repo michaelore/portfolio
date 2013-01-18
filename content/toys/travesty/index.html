@@ -1,0 +1,23 @@
+<h2>Travesty Generator</h2>
+<p>I once found a web page that would garble an input body of text using an interesting algorithm, though the <a href="http://www.eskimo.com/~rstarr/poormfa/travesty.html">page</a> is now down. The algorithm would use the source text to produce a <a href ="http://en.wikipedia.org/wiki/Markov_chain">Markov Chain</a>, in which the state of the system is a substring of length n from the source text, and the next state can be any other length-n substring for which the first n-1 characters match the last n-1 characters of the current state. Thus, the state is shifted by one character at a time.</p>
+<p>I wanted to have a Unix rather than web-based implementation so that I could use it with other Unix utilities, and so that I would not need to put any limit on the size of the output. I originally wrote an implementation in <a href="https://github.com/michaelore/random-snippets/blob/master/haskell/Travesty.hs">Haskell</a>, but the code stopped working with recent versions of GHC. More recently I wrote a new, faster, and cleaner implementation in C++, available <a href="https://github.com/michaelore/travesty">here</a>.</p>
+<div class="example">
+	<h3>Example</h3>
+	<pre>
+$ echo "I came. I saw. I conquered." | ./travesty 4 | head
+I conquered.
+I conquered.
+I came. I conquered.
+I came. I conquered.
+I conquered.
+I came. I conquered.
+I came. I came. I saw. I saw. I conquered.
+I conquered.
+I conquered.
+I came. I saw. I saw. I saw. I saw. I came. I saw. I saw. I came. I saw. I saw. I saw. I came. I came. I saw. I saw. I saw. I conquered.
+	</pre>
+</div>
+
+<div class="goback">
+	<a href="..">Go Back</a>
+</div>
