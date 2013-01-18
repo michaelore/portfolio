@@ -1,0 +1,19 @@
+<h2>Chemical Equation Balancer</h2>
+<p>This is a chemical equation balancing program made with Haskell. The parsing is done with Parsec, and the math is done with a small home-made linear algebra library. Command line and graphical interfaces are available.</p>
+<div class="example">
+	<h3>Example</h3>
+	<pre>
+$ echo "H2 + O2 -> H2O" | ./balancer-cli
+2H2 + O2 -> 2H2O
+$ echo "CH4 + O2 -> CO2 + H2O" | ./balancer-cli
+CH4 + 2O2 -> CO2 + 2H2O
+	</pre>
+</div>
+<a href="Balancer.hs">Balancer.hs</a>
+<a href="Matrix.hs">Matrix.hs</a>
+<a href="balancer-cli.hs">balancer-cli.hs</a>
+<a href="balancer-gui.hs">balancer-gui.hs</a>
+
+<div class="goback">
+	<a href="..">Go Back</a>
+</div>
