@@ -1,6 +1,9 @@
 <h2>Neural Networks</h2>
 <p>This is a library for artificial neural networks in Erlang, and a sample rock-paper-scissors application using it. I was influenced by <a href="http://www.trapexit.org/Erlang_and_Neural_Networks">this article</a>, but the code here is my own. When first reading the article, I could not understand their implementation and decided to read more about ANNs and implement it myself from scratch. Comparing my code with that in the article, I noticed a few interesting differences. The most notable in my eyes is that each perceptron in my code sends its output only after all of its inputs have updated, while the code developed in the article updates once every time any of the input update. This difference would be most visible with neural networks that contain cycles. My code would iterate through the cycle only when the initial inputs are changed but the article's code would iterate through the cycle continuously, changing until an equilibrium is reached.</p>
 <p>I tested my library using it to make an AI for rock-paper-scissors. I constructed a standard three-layer feed-forward network, with 12 input nodes, 10 hidden nodes, and 3 output nodes. The network learns and plays simultaneously. The outputs are used as the probability for the AI to play rock, paper, and scissors, and each round along with the previous round are used as inputs back into the network. The AI is capable of learning: if a player repeatedly plays the same way, it will catch on in a few rounds. It is, however, predictable enough that total randomness is most likely better.</p>
+<h3>Source</h3>
+<a href="ann.erl">ann.erl</a>
+<a href="rps.erl">rps.erl</a><br /><br />
 <div class="example">
 	<h3>Example</h3>
 	<pre>
@@ -44,8 +47,6 @@ Wins: 2, Losses: 1, Draws: 3
 r/p/s
 	</pre>
 </div>
-<a href="ann.erl">ann.erl</a>
-<a href="rps.erl">rps.erl</a>
 
 <div class="goback">
 	<a href="..">Go Back</a>

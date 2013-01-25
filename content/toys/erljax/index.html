@@ -8,9 +8,11 @@ table {
 </style>
 <h2>Erlang/Ajax Toy</h2>
 <p>This is a simple web "game" made using <a href="http://yaws.hyber.org/">yaws</a> and <a href="http://jquery.com/">jQuery</a>. I wanted to try using Erlang to create a real-time, multiplayer game. I decided the best way to handle both the networking and GUI was with web technologies. What I ended up with is a proof-of-concept consisting of a grid of X's and O's, that may be toggled by clicking on a cell. The interesting part is that the grid is persistent and synced between all users viewing the page. A few years later, just for fun, I worked with a sister to add sounds when cells are clicked on.</p>
-<p>Below is a Javascript-only demo. The grid persistence and syncing feature will not work here, because I cannot run yaws here.</p>
+<h3>Source</h3>
+<a href="http://www.github.com/michaelore/random-snippets/tree/master/erlang/web-game-thing/">Source at github.com</a><br /><br />
 <div class="demo">
 	<h3>Demo</h3>
+  <p>Below is a Javascript-only demo. The grid persistence and syncing feature will not work here, because I cannot run yaws here.</p>
 	<table>
 	<tr>
 	<td><img src="images/x.png" id="X9Y9" onclick="click(&#34X9Y9&#34)"></img></td>
@@ -124,7 +126,6 @@ table {
 	<td><img src="images/x.png" id="X0Y0" onclick="click(&#34X0Y0&#34)"></img></td></tr>
 	</table>
 </div>
-<a href="http://www.github.com/michaelore/random-snippets/tree/master/erlang/web-game-thing/">Source at github.com</a>
 
 <div class="goback">
 	<a href="..">Go Back</a>

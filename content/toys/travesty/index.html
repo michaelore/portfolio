@@ -1,6 +1,8 @@
 <h2>Travesty Generator</h2>
 <p>I once found a web page that would garble an input body of text using an interesting algorithm, though the <a href="http://www.eskimo.com/~rstarr/poormfa/travesty.html">page</a> is now down. The algorithm would use the source text to produce a <a href ="http://en.wikipedia.org/wiki/Markov_chain">Markov Chain</a>, in which the state of the system is a substring of length n from the source text, and the next state can be any other length-n substring for which the first n-1 characters match the last n-1 characters of the current state. Thus, the state is shifted by one character at a time.</p>
-<p>I wanted to have a Unix rather than web-based implementation so that I could use it with other Unix utilities, and so that I would not need to put any limit on the size of the output. I originally wrote an implementation in <a href="https://github.com/michaelore/random-snippets/blob/master/haskell/Travesty.hs">Haskell</a>, but the code stopped working with recent versions of GHC. More recently I wrote a new, faster, and cleaner implementation in C++, available <a href="https://github.com/michaelore/travesty">here</a>.</p>
+<p>I wanted to have a Unix rather than web-based implementation so that I could use it with other Unix utilities, and so that I would not need to put any limit on the size of the output. I originally wrote an implementation in <a href="https://github.com/michaelore/random-snippets/blob/master/haskell/Travesty.hs">Haskell</a>, but the code stopped working with recent versions of GHC. More recently I wrote a new, faster, and cleaner implementation in C++.</p>
+<h3>Source</h3>
+<a href="https://github.com/michaelore/travesty">GitHub</a><br /><br />
 <div class="example">
 	<h3>Example</h3>
 	<pre>
