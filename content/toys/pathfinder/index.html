@@ -1,0 +1,27 @@
+<h2>Word Path Finder</h2>
+<p>This is a fully general solution to a problem asked by an introductory statistics instructor. The question asked was, "How can the word 'STAT' by transformed into the word 'GLEE' by changing only one letter at a time, such that each intermediate form is a real word?". The program reads a dictionary file (such as those commonly included with Linux), and uses it to construct a graph connecting all words that have the same length and are only one letter apart. It then uses a <a href="http://en.wikipedia.org/wiki/Breadth-first_search">Breadth First Search</a> to find the shortest possible path connecting the two input words.</p>
+<div class="example">
+	<h3>Example</h3>
+	<pre>
+$ ./wordpath stat glee
+stat
+slat
+slae
+slee
+glee
+$ ./wordpath seven disks
+seven
+sever
+siver
+diver
+dicer
+dices
+dicks
+disks
+	</pre>
+</div>
+<a href="wordpath.cpp">wordpath.cpp</a>
+
+<div class="goback">
+	<a href="..">Go Back</a>
+</div>
